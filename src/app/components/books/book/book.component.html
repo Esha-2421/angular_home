@@ -1,0 +1,20 @@
+<p>book works!</p>
+<table>
+    <tr>
+        <th>ISBN</th>
+        <th>AUTHOR NAME</th>
+        <th>TITLE</th>
+        <th>PRICE</th>
+        <th>QUANTITY</th>
+    </tr>
+    @for (book of books; track $index) {
+        <tr>
+            <td>{{book.isbn}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.price}}</td>
+            <td>{{book.quantity}}</td>
+        </tr>
+    }
+    
+</table>

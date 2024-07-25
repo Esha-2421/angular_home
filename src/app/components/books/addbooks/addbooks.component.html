@@ -1,0 +1,80 @@
+@if (isSuccess) {
+    <div class="alert alert-success">
+        Publisher Successfully Registered
+    </div>
+}
+<form [formGroup]="reg" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+        <label>ISBN</label>
+        <input
+          type="text"
+          formControlName="isbn"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['isbn'].errors }"
+        />
+        @if (submitted && f['isbn'].errors) {
+        <div class="invalid-feedback">
+          @if (f['isbn'].errors['required']) {
+          <div>ISBN is required</div>
+          } 
+          @if (f['isbn'].errors['pattern'] && f['isbn'].errors['minlength'] ) {
+          <div>Invalid ISBN</div>
+          } 
+          @if (f['isbn'].errors['pattern'] && f['isbn'].errors['maxlength']) {
+          <div>Invalid ISBN</div>
+          } 
+        </div>
+        }
+      </div>
+    <label>Author Name</label>
+    <input type="text" formControlName="author" class="form-control"
+    [ngClass]="{'is-invalid':submitted && f['author'].errors}"/>
+    @if (submitted && f['author'].errors) {
+        @if (f['author'].errors['required']) 
+        {
+            <div>Name is mandatory</div>
+        }
+    }
+    
+    
+    <label>Title</label>
+    <input type="text" formControlName="title" class="form-control"
+    [ngClass]="{'is-invalid':submitted && f['title'].errors}"/>
+    @if (submitted && f['title'].errors) {
+        @if (f['title'].errors['required']) 
+        {
+            <div>E-mail is mandatory</div>
+        }
+    }
+    <label>Category</label>
+        <select name="" class="form-control">
+            @for (category of categories; track $index) {
+                <option value="{{category.id}}">{{category.name}}</option>
+            }
+        </select>
+    <label>Publisher</label>
+        <select name="" class="form-control">
+            @for (publisher of publishers; track $index) {
+                <option value="{{publisher.id}}">{{publisher.name}}</option>
+            }
+        </select>
+    <label>price</label>
+    <input type="text" formControlName="price" class="form-control"
+    [ngClass]="{'is-invalid':submitted && f['price'].errors}"/>
+    @if (submitted && f['price'].errors) {
+        @if (f['price'].errors['required']) 
+        {
+            <div>price is mandatory</div>
+        }
+    }
+    <label>Quantity</label>
+    <input type="text" formControlName="quantity" class="form-control"
+    [ngClass]="{'is-invalid':submitted && f['quantity'].errors}"/>
+    @if (submitted && f['quantity'].errors) {
+        @if (f['quantity'].errors['required']) 
+        {
+            <div>Quantity is mandatory</div>
+        }
+    }
+    <button type="submit" class="btn-success">Register</button>
+</form>

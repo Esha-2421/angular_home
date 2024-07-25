@@ -1,0 +1,24 @@
+<p>publishers works!</p>
+<table>
+    <tr>
+        <th>PUBLISHER NAME</th>
+        <th>MOBILE</th>
+        <th>E-MAIL</th>
+        <th>ADDRESS</th>
+        <th>VIEW</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+    </tr>
+    @for (publisher of publishers; track $index) {
+        <tr>
+            <td>{{publisher.name}}</td>
+            <td>{{publisher.mobile}}</td>
+            <td>{{publisher.email}}</td>
+            <td>{{publisher.address}}</td>
+            <td><fa-icon [icon]="faEye"></fa-icon></td>
+            <td><fa-icon [icon]="faPencil"></fa-icon></td>
+            <td><fa-icon [icon]="faTrash" (click)="delete(publisher.id)"></fa-icon></td>
+        </tr>
+    }
+    
+</table>

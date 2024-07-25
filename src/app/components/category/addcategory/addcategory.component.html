@@ -1,0 +1,19 @@
+@if (isSuccess) {
+    <div class="alert alert-success">
+        Publisher Successfully Registered
+    </div>
+}
+<form [formGroup]="reg" (ngSubmit)="onSubmit()">
+    <label>Category Name</label>
+    <input type="text" formControlName="name" class="form-control"
+    [ngClass]="{'is-invalid':submitted && f['name'].errors}"/>
+    @if (submitted && f['name'].errors) {
+        @if (f['name'].errors['required']) 
+        {
+            <div>Name is mandatory</div>
+        }
+    }
+    
+    
+    <button type="submit" class="btn-success">Register</button>
+</form>
